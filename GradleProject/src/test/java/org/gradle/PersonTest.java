@@ -1,6 +1,9 @@
 package org.gradle;
 
 import org.junit.Test;
+
+import service.Person;
+
 import static org.junit.Assert.*;
 
 public class PersonTest {
