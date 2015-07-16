@@ -1,0 +1,17 @@
+package models;
+
+public class User 
+{
+	  private final String name;
+	  private String email;
+	  private String password;
+	  
+	  private ShopList shopList;
+	  
+	  User(String name)
+	  {
+		  this.name = name;
+		 shopList = new ShopList();
+	  }
+	
+}

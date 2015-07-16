@@ -1,0 +1,22 @@
+package models;
+
+import java.util.ArrayList;
+
+public class List 
+{
+	private final ArrayList<Item> items;
+
+	List()
+	{
+		items = new ArrayList<Item>();
+	}
+	
+	public ArrayList<Item> getItems()
+	{
+		return this.items;
+	}
+	
+	public void addItem() {
+
+	}
+}

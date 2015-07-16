@@ -8,6 +8,7 @@
 		<item value="edu.umd.cs.findbugs.plugin.eclipse:3.0.1.20150306-5afe4d1"/>
 		<item value="moreclipboard.feature:1.2.2"/>
 		<item value="net.resheim.eclipse.timekeeper:1.0.0.201502222139"/>
+		<item value="org.eclipse.buildship:1.0.1.v20150707-1402"/>
 		<item value="org.eclipse.cvs:1.4.200.v20150603-2000"/>
 		<item value="org.eclipse.datatools.connectivity.feature:1.12.0.v201406061321-7C7n9DEsxcwtN5odeWrQrgwYHq8"/>
 		<item value="org.eclipse.datatools.connectivity.oda.designer.core.feature:1.12.0.v201406061321-787B7PBgJ9DUBNCVAaSZ"/>

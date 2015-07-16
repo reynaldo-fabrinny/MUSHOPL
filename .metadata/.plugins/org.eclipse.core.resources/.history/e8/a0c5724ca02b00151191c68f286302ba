@@ -1,0 +1,11 @@
+package models;
+
+import java.util.ArrayList;
+
+public class List {
+	ArrayList<Item> items;
+
+	public void addItem() {
+
+	}
+}
