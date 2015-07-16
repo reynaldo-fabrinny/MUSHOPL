@@ -1414,3 +1414,6 @@ Java Model Exception: Java Model Status [ItemListTest [in ItemListTest.java [in 
 	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
 !SUBENTRY 1 org.eclipse.jdt.core 4 969 2015-07-16 12:32:49.931
 !MESSAGE ItemListTest [in ItemListTest.java [in org.gradle [in src/test/java [in GradleProject]]]] does not exist
+
+!ENTRY org.eclipse.ui 4 4 2015-07-16 12:35:29.650
+!MESSAGE Conflicting handlers for org.eclipse.wst.sse.ui.search.find.occurrences: {org.eclipse.jst.jsp.ui.internal.handlers.JSPFindOccurrencesHandler} vs {org.eclipse.wst.html.ui.internal.handlers.HTMLFindOccurrencesHandler}
