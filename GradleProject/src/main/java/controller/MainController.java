@@ -29,11 +29,14 @@ public class MainController {
 		logger.debug("index() is executed!");
  
 		model.put("title", applicationService.getTitle(""));
+		
 		//model.put("msg", helloWorldService.getDesc());
  
 		return "index";
 	}
  
+	
+	
 //	@RequestMapping(value = "/hello/{name:.+}", method = RequestMethod.GET)
 //	public ModelAndView hello(@PathVariable("name") String name) {
 // 

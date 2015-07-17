@@ -17,7 +17,7 @@ public class ApplicationService
 		return "Welcome to the Shopping list";
  
 	}
- 
+	
 	public String getTitle(String name) 
 	{
 		logger.debug("getTitle() is executed! name "+ name);

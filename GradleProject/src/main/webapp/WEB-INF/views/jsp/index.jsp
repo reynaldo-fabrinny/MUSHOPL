@@ -27,7 +27,7 @@
 	</div>
 	 
 	<div class="container">
-	   <form method="post" action="list.jsp">
+	   <form method="post" action="index.jsp">
             <table border="1" width="30%" cellpadding="3">
                 <thead>
                     <tr>
