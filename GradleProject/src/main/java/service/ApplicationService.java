@@ -5,29 +5,30 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 @Service
-public class HelloWorldService {
-
-	private static final Logger logger = Logger.getLogger(HelloWorldService.class);
+public class ApplicationService 
+{
+	private static final Logger logger = Logger.getLogger(ApplicationService.class);
 	 
-	public String getDesc() {
+	public String getDesc() 
+	{
  
 		logger.debug("getDesc() is executed!");
  
-		return "Gradle + Spring MVC Hello World Example";
+		return "Welcome to the Shopping list";
  
 	}
  
-	public String getTitle(String name) {
- 
+	public String getTitle(String name) 
+	{
 		logger.debug("getTitle() is executed! name "+ name);
  
 		if(StringUtils.isEmpty(name))
 		{
-			return "Hello World";
+			return "Welcome to the Shopping list";
 		}
 		else
 		{
-			return "Hello " + name;
+			return "Welcome to the Shopping list  " + name;
 		}
  
 	}

@@ -4,11 +4,6 @@
 <html lang="en">
 <head>
 	<title>The Ultra Shop List</title>
-<!--  
-<spring:url value="/resources/core/css/hello.css" var="coreCss" />
-<spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" />
-ADD CSS <link href="${bootstrapCss}" rel="stylesheet" />
-<link href="${coreCss}" rel="stylesheet" />   -->
 </head>
  
 <body>
@@ -32,24 +27,31 @@ ADD CSS <link href="${bootstrapCss}" rel="stylesheet" />
 	</div>
 	 
 	<div class="container">
-	  <div class="row">
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
-		</div>
+	   <form method="post" action="list.jsp">
+            <table border="1" width="30%" cellpadding="3">
+                <thead>
+                    <tr>
+                        <th colspan="2">Login Here</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>User Name/E-mail</td>
+                        <td><input type="text" name="uname" value="" size=15 /></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" name="pass" value="" size=15 /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Login" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
 	  </div>
 	  <hr>
 	</div>
- <!--  
-<spring:url value="/resources/core/css/hello.js" var="coreJs" />
-<spring:url value="/resources/core/css/bootstrap.min.js" var="bootstrapJs" />
- 
-<script src="${coreJs}"></script>
-<script src="${bootstrapJs}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
- -->
+
 </body>
 </html>

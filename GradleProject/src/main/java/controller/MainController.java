@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import service.HelloWorldService;
+import service.ApplicationService;
  
 @Controller
 public class MainController {
  
 	private final Logger logger = Logger.getLogger(MainController.class);
-	private final HelloWorldService helloWorldService;
+	private final ApplicationService applicationService;
  
 	@Autowired
-	public MainController(HelloWorldService helloWorldService) {
-		this.helloWorldService = helloWorldService;
+	public MainController(ApplicationService applicationService) {
+		this.applicationService = applicationService;
 	}
  
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -28,25 +28,25 @@ public class MainController {
  
 		logger.debug("index() is executed!");
  
-		model.put("title", helloWorldService.getTitle(""));
-		model.put("msg", helloWorldService.getDesc());
+		model.put("title", applicationService.getTitle(""));
+		//model.put("msg", helloWorldService.getDesc());
  
 		return "index";
 	}
  
-	@RequestMapping(value = "/hello/{name:.+}", method = RequestMethod.GET)
-	public ModelAndView hello(@PathVariable("name") String name) {
- 
-		logger.debug("hello() is executed - name "+ name);
- 
-		ModelAndView model = new ModelAndView();
-		model.setViewName("index");
- 
-		model.addObject("title", helloWorldService.getTitle(name));
-		model.addObject("msg", helloWorldService.getDesc());
- 
-		return model;
- 
-	}
+//	@RequestMapping(value = "/hello/{name:.+}", method = RequestMethod.GET)
+//	public ModelAndView hello(@PathVariable("name") String name) {
+// 
+//		logger.debug("hello() is executed - name "+ name);
+// 
+//		ModelAndView model = new ModelAndView();
+//		model.setViewName("index");
+// 
+//		model.addObject("title", helloWorldService.getTitle(name));
+//	//	model.addObject("msg", helloWorldService.getDesc());
+// 
+//		return model;
+// 
+//	}
  
 }
