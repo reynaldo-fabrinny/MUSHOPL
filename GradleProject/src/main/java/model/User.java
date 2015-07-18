@@ -1,25 +1,34 @@
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="user")
 public class User 
 {
 	@Id
     @GeneratedValue
+    @Column(name="id")
 	private Long id;
 	
+	@Column(name="name")
 	private String name;
+	 
+	@Column(name="email")
 	private String email;
+	 
+	@Column(name="password")
 	private String password;
 	  
 	private ShopList shopList;
 	  
 	public User(){}
 	  
-	User(String name, String email)
+	public User(String name, String email)
 	{
 	  this.name = name;
 	  this.email = email;
