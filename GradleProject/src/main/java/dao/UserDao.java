@@ -26,7 +26,10 @@ public class UserDao
         //em.persist(user);
         User user2 = new User("name", "email");
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(user2);
+        //session.persist(user2);
+        long a = 0;
+        User object = (User) session.get(User.class, a);
+        System.out.println(object.getEmail());
         
       //  hibernateTemplate.save(user2);
       //  return user.getId();

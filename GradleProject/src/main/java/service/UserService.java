@@ -9,17 +9,17 @@ import model.User;
 @Service
 public class UserService 
 {
-	private UserDao userDaoI;
+	private UserDao userDao;
 	
-	 public void setUsernDAO(UserDao userDaoI) 
+	 public void setUserDao(UserDao userDao) 
 	 {
-	        this.userDaoI = userDaoI;
+	        this.userDao = userDao;
 	 }
 	 
 	 @Transactional
 	 public void addUser(User u) 
 	 {
-		 this.userDaoI.addUser(u);
+		 this.userDao.addUser(u);
 	 }
 	
 }

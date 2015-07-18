@@ -39,7 +39,7 @@
     <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<beans:property name="driverClassName" value="org.hsqldb.jdbcDriver" />
 		<beans:property name="url" value="jdbc:hsqldb:mem:testdb" />
-		<beans:property name="username" value="sa" />
+		<beans:property name="username" value="SA" />
 		<beans:property name="password" value="" />
 		<beans:property name="initialSize" value="5" />
 		<beans:property name="maxActive" value="10" />
@@ -70,9 +70,9 @@
 	<beans:bean id="userDao" class="dao.UserDao">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<!-- <beans:bean id="userService" class="service.UserService">
+	<beans:bean id="userService" class="service.UserService">
 		<beans:property name="userDao" ref="userDao"></beans:property>
-	</beans:bean> -->
+	</beans:bean>
 	<context:component-scan base-package="controller" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
