@@ -34,21 +34,18 @@
 		<beans:property name="password" value="" />
 	</beans:bean> -->
 	
-	<beans:bean id="dataSource"
-        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <beans:property name="driverClassName">
-            <beans:value>org.hsqldb.jdbcDriver</beans:value>
-        </beans:property>
-        <beans:property name="url">
-            <beans:value>jdbc:hsqldb:hsql://localhost/testdb</beans:value>
-        </beans:property>
-        <beans:property name="username">
-            <beans:value>sa</beans:value>
-        </beans:property>
-        <beans:property name="password">
-            <beans:value></beans:value>
-        </beans:property>
-    </beans:bean>
+	<!-- HSQLDB Data Source -->        
+    <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<beans:property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<beans:property name="url" value="jdbc:hsqldb:mem:testdb" />
+		<beans:property name="username" value="sa" />
+		<beans:property name="password" value="" />
+		<beans:property name="initialSize" value="5" />
+		<beans:property name="maxActive" value="10" />
+		<beans:property name="poolPreparedStatements" value="true" />
+		<beans:property name="maxOpenPreparedStatements" value="10" />
+	</beans:bean> 
+
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 	<beans:bean id="hibernate4AnnotatedSessionFactory"
@@ -61,8 +58,7 @@
 		</beans:property>
 		<beans:property name="hibernateProperties">
 			<beans:props>
-				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
-				</beans:prop>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</beans:prop>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
 			</beans:props>
 		</beans:property>
