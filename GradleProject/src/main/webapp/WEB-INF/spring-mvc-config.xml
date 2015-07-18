@@ -18,6 +18,11 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
  
+	<!-- <bean name='/loginCheck.jsp'
+    	class='com.javabeat.net.ShowAllMailsController'>
+	</bean> -->
+
+ 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
  
 	<mvc:annotation-driven />

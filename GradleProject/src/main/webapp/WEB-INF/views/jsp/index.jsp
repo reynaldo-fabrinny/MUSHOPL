@@ -27,7 +27,7 @@
 	</div>
 	 
 	<div class="container">
-	   <form method="post" action="index.jsp">
+	   <form method="post" action="#">
             <table border="1" width="30%" cellpadding="3">
                 <thead>
                     <tr>
@@ -37,14 +37,14 @@
                 <tbody>
                     <tr>
                         <td>User Name/E-mail</td>
-                        <td><input type="text" name="uname" value="" size=15 /></td>
+                        <td><input id="email" type="text" name="email" size=15 /></td>
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="password" name="pass" value="" size=15 /></td>
+                        <td><input type="password" name="password" value="" size=15 /></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Login" /></td>
+                        <td><input type="submit" value="Submit" /></td>
                     </tr>
                 </tbody>
             </table>

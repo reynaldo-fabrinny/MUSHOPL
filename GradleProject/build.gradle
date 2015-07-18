@@ -20,7 +20,6 @@ repositories {
 dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     compile  'org.apache.commons:commons-lang3:3.0'
-    compile  'log4j:log4j:1.2.16'
     compile 'org.springframework:spring-webmvc:4.1.6.RELEASE'
     compile 'javax.servlet:jstl:1.2'
     compile 'org.hsqldb:hsqldb:2.0.0'
@@ -58,10 +57,8 @@ eclipse {
  
   wtp {
     component {
- 
       //define context path, default to project folder name
       contextPath = 'mushopl'
- 
     }
  
   }

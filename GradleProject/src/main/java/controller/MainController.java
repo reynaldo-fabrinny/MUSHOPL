@@ -2,20 +2,19 @@ package controller;
  
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
+import models.Login;
 import service.ApplicationService;
  
 @Controller
-public class MainController {
- 
-	private final Logger logger = Logger.getLogger(MainController.class);
+public class MainController 
+{ 
 	private final ApplicationService applicationService;
  
 	@Autowired
@@ -24,32 +23,25 @@ public class MainController {
 	}
  
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Map<String, Object> model) {
+	public String loginForm(Model model) 
+	{
+		//model.put("title", applicationService.getTitle(""));
+		model.addAttribute("loginTry", new Login());
+		//model.put("msg", helloWorldService.getDesc());
  
-		logger.debug("index() is executed!");
- 
-		model.put("title", applicationService.getTitle(""));
+		return "index";
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public String loginSubmit(@ModelAttribute Login loginTry, Model model) 
+	{
+		model.addAttribute("loginTry", loginTry);
+		System.out.println(loginTry.getEmail()+ "  pegou o valor do user ");
 		
 		//model.put("msg", helloWorldService.getDesc());
  
 		return "index";
 	}
- 
-	
-	
-//	@RequestMapping(value = "/hello/{name:.+}", method = RequestMethod.GET)
-//	public ModelAndView hello(@PathVariable("name") String name) {
-// 
-//		logger.debug("hello() is executed - name "+ name);
-// 
-//		ModelAndView model = new ModelAndView();
-//		model.setViewName("index");
-// 
-//		model.addObject("title", helloWorldService.getTitle(name));
-//	//	model.addObject("msg", helloWorldService.getDesc());
-// 
-//		return model;
-// 
-//	}
+
  
 }
