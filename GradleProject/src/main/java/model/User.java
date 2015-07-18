@@ -24,7 +24,7 @@ public class User
 	@Column(name="password")
 	private String password;
 	  
-	private ShopList shopList;
+	//private ShopList shopList;
 	  
 	public User(){}
 	  
@@ -32,7 +32,7 @@ public class User
 	{
 	  this.name = name;
 	  this.email = email;
-	  this.shopList = new ShopList();
+	  //this.shopList = new ShopList();
 	}
 	  
 	public String getEmail() {
@@ -51,13 +51,13 @@ public class User
 		this.password = password;
 	}
 
-	public ShopList getShopList() {
-		return shopList;
-	}
-
-	public void setShopList(ShopList shopList) {
-		this.shopList = shopList;
-	}
+//	public ShopList getShopList() {
+//		return shopList;
+//	}
+//
+//	public void setShopList(ShopList shopList) {
+//		this.shopList = shopList;
+//	}
 
 	public String getName() {
 		return name;

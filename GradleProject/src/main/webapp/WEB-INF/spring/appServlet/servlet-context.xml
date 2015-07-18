@@ -21,7 +21,8 @@
 		in the /WEB-INF/views directory -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<beans:property name="prefix" value="/WEB-INF/views/jsp/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
@@ -66,12 +67,12 @@
 		</beans:property>
 	</beans:bean>
 	
-	<beans:bean id="userDAO" class="dao.UserDao">
+	<beans:bean id="userDao" class="dao.UserDao">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="userService" class="service.UserService">
+	<!-- <beans:bean id="userService" class="service.UserService">
 		<beans:property name="userDao" ref="userDao"></beans:property>
-	</beans:bean>
+	</beans:bean> -->
 	<context:component-scan base-package="src.main.java" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
