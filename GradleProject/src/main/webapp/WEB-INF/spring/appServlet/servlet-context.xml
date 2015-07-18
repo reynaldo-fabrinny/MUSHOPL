@@ -73,7 +73,7 @@
 	<!-- <beans:bean id="userService" class="service.UserService">
 		<beans:property name="userDao" ref="userDao"></beans:property>
 	</beans:bean> -->
-	<context:component-scan base-package="src.main.java" />
+	<context:component-scan base-package="controller" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
