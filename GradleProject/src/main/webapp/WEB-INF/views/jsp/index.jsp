@@ -37,7 +37,7 @@
                 <tbody>
                     <tr>
                         <td>User Name/E-mail</td>
-                        <td><input id="email" type="text" name="email" size=15 /></td>
+                        <td><input type="text" name="email" size=15 /></td>
                     </tr>
                     <tr>
                         <td>Password</td>
