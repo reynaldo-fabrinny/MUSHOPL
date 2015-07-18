@@ -53,7 +53,9 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
-				<beans:value>src.main.java.model.User</beans:value>
+				<beans:value>model.User</beans:value>
+				<beans:value>model.ShopList</beans:value>
+				<beans:value>model.Item</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

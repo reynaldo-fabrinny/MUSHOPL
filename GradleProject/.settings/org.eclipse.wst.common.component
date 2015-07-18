@@ -5,6 +5,9 @@
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
 		<wb-resource deploy-path="/" source-path="src/main/webapp"/>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/reynaldoFabrinny/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2/f951934aa5ae5a88d7e6dfaa6d32307d834a88be/commons-collections-3.2.jar">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
 		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/reynaldoFabrinny/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-jpa/1.1.4.RELEASE/9e5d736f66dc2c77e1bae89002ea31e2d08741cb/spring-boot-starter-data-jpa-1.1.4.RELEASE.jar">
 			<dependency-type>uses</dependency-type>
 		</dependent-module>
