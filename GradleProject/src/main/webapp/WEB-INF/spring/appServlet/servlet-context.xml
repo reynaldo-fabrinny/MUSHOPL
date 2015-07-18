@@ -25,16 +25,30 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+	<!-- <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		destroy-method="close">
 		<beans:property name="driverClassName" value="org.hsqldb.jdbcDriver" />
 		<beans:property name="url"
 			value="jdbc:hsqldb:hsql://localhost/testdb" />
 		<beans:property name="username" value="sa" />
 		<beans:property name="password" value="" />
-	</beans:bean>
+	</beans:bean> -->
 	
-	
+	<beans:bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName">
+            <beans:value>org.hsqldb.jdbcDriver</beans:value>
+        </beans:property>
+        <beans:property name="url">
+            <beans:value>jdbc:hsqldb:hsql://localhost/testdb</beans:value>
+        </beans:property>
+        <beans:property name="username">
+            <beans:value>sa</beans:value>
+        </beans:property>
+        <beans:property name="password">
+            <beans:value></beans:value>
+        </beans:property>
+    </beans:bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 	<beans:bean id="hibernate4AnnotatedSessionFactory"
@@ -42,7 +56,7 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
-				<beans:value>com.journaldev.spring.model.Person</beans:value>
+				<beans:value>src.main.java.model.User</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -54,13 +68,13 @@
 		</beans:property>
 	</beans:bean>
 	
-	<beans:bean id="userDAO" class="com.journaldev.spring.dao.PersonDAOImpl">
+	<beans:bean id="userDAO" class="dao.UserDao">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="userService" class="com.journaldev.spring.service.PersonServiceImpl">
-		<beans:property name="userDAO" ref="userDAO"></beans:property>
+	<beans:bean id="userService" class="service.UserService">
+		<beans:property name="userDao" ref="userDao"></beans:property>
 	</beans:bean>
-	<context:component-scan base-package="com.journaldev.spring" />
+	<context:component-scan base-package="src.main.java" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
