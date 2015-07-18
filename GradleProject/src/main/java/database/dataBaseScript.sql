@@ -1,8 +1,16 @@
-CREATE TABLE 'user' (
-  'id' int(10) unsigned NOT NULL auto_increment,
-  'email' varchar(45) NOT NULL,
-  'uname' varchar(45) NOT NULL,
-  'pass' varchar(45) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE user (
+  id INTEGER NOT NULL IDENTITY,
+  email varchar(45) UNIQUE NOT NULL,
+  name varchar(45) NOT NULL,
+  password varchar(45) NOT NULL
+);
 
+--CREATE TABLE item (
+--  id INTEGER NOT NULL IDENTITY,
+--  email varchar(45) UNIQUE NOT NULL,
+--  name varchar(45) NOT NULL,
+--  password varchar(45) NOT NULL
+--);
+
+
+insert into user (email, name, password) values ('reynaldo@gmail.com','reynaldo','1234');

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import models.Login;
+import model.User;
 import service.ApplicationService;
  
 @Controller
@@ -26,14 +26,14 @@ public class MainController
 	public String loginForm(Model model) 
 	{
 		//model.put("title", applicationService.getTitle(""));
-		model.addAttribute("loginTry", new Login());
+		model.addAttribute("loginTry", new User());
 		//model.put("msg", helloWorldService.getDesc());
  
 		return "index";
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String loginSubmit(@ModelAttribute Login loginTry, Model model) 
+	public String loginSubmit(@ModelAttribute User loginTry, Model model) 
 	{
 		model.addAttribute("loginTry", loginTry);
 		System.out.println(loginTry.getEmail()+ "  pegou o valor do user ");
