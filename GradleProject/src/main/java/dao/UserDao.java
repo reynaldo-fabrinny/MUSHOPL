@@ -1,5 +1,6 @@
 package dao;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -28,8 +29,11 @@ public class UserDao
         Session session = this.sessionFactory.getCurrentSession();
         //session.persist(user2);
         long a = 0;
-        User object = (User) session.get(User.class, a);
-        System.out.println(object.getEmail());
+        session.get(User.class, a);
+      // Query createQuery = session.createQuery("create table aa  (id INTEGER NOT NULL IDENTITY)");
+       // Query createQuery = session.createQuery("SELECT * FROM INFORMATION_SCHEMA.TABLES");
+      // createQuery.executeUpdate();
+       //System.out.println(object.getEmail());
         
       //  hibernateTemplate.save(user2);
       //  return user.getId();
