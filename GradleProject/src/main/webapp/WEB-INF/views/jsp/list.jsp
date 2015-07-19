@@ -24,12 +24,13 @@
 	  	<c:if test="${empty items}">
 	  		User List is Empty
 	  	</c:if>
-	  	</br></br>
+	  	</br>
+	  	</br>
 	    <form class="addItem" action="list" method="post">
 	      New Item: <br />
-	      <textarea name="name" maxlength="50"  rows="1" cols="15"></textarea><br />
+	      <input type="text" name="name" maxlength="50"><br />
 	      Item Quantity: <br />
-	      <textarea name="quantity" maxlength="3"  rows="1" cols="15"></textarea><br />
+	      <input name="quantity" type="number" min="0"  maxlength="3"><br />
 	      <input type="submit" value="Add">
 	    </form>
 	</body>

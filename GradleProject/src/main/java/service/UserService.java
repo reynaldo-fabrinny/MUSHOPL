@@ -3,16 +3,16 @@ package service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import dao.UserDao;
+import dao.UserDAOImp;
 import model.ShopList;
 import model.User;
 
 @Service
 public class UserService 
 {
-	private UserDao userDao;
+	private UserDAOImp userDao;
 	
-	 public void setUserDao(UserDao userDao) 
+	 public void setUserDao(UserDAOImp userDao) 
 	 {
 	        this.userDao = userDao;
 	 }

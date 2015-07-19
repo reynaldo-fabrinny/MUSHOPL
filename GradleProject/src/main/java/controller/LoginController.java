@@ -21,6 +21,7 @@ import service.UserService;
 public class LoginController 
 { 
 	private UserService userService;
+	private User loggedUser;
 	
 	//TODO ERASE
 	private List<Item> dumpUserList = new ArrayList<Item>();
@@ -48,31 +49,27 @@ public class LoginController
 		model.addAttribute("loginTry", loginTry);
 		System.out.println(loginTry.getEmail() + "  pegou o valor do user ");
 		
-		//model.put("msg", helloWorldService.getDesc());
-		//this.userService.addUser(new User());
-		
 		// PRESTAR ATENCAO NA LOGICA AQUIs
-		if(this.userService.existsUser(loginTry) != null )
+		if((this.loggedUser = this.userService.existsUser(loginTry)) != null )
 		{
-			System.out.println(this.userService.existsUser(loginTry));
 			System.out.println("------------------------LOGADO");
 			return "list";
 		}
 		else
 		{
 			System.out.println("-----------------------ERRO");
-			model.put("msg", "Invalid Login");
+			model.addAttribute("msg", "Invalid Login");
 			
-			return "index";
+			return "redirect:/";
 		}
 	}
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView listItems(Model model) 
 	{
-		//model.put("title", applicationService.getTitle(""));
 		model.addAttribute("items", dumpUserList);
-		//model.put("msg", helloWorldService.getDesc());
+		model.addAttribute("userName","rey");
+
 		ModelAndView mv = new ModelAndView("list");
 		return mv;
 	}

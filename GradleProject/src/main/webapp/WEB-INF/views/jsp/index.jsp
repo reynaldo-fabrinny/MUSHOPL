@@ -19,7 +19,7 @@
 							${msg}
 						</c:if>
 	                    <tr>
-	                        <td>User Name/E-mail</td>
+	                        <td>Username/E-mail</td>
 	                        <td><input type="text" name="email" size=15 /></td>
 	                    </tr>
 	                    <tr>
@@ -33,6 +33,5 @@
 	            </table>
 	        </form>
 		  </div>
-		  <hr>
 	</body>
 </html>

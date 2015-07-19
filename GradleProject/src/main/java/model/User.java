@@ -38,6 +38,11 @@ public class User
 	  this.email = email;
 	  this.shopList = new ShopList();
 	}
+	public User(String name, String email, String password)
+	{
+		this(name, email);
+		this.password = password;
+	}
 	  
 	public String getEmail() {
 		return email;
