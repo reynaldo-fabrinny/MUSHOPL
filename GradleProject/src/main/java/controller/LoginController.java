@@ -15,49 +15,51 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.Item;
 import model.User;
-import service.UserService;
+import service.LoginService;
  
 @Controller
 public class LoginController 
 { 
-	private UserService userService;
+	private LoginService loginService;
 	private User loggedUser;
 	
 	@Autowired(required=true)
-	@Qualifier(value="userService")
-	public void setUserService(UserService us)
+	@Qualifier(value="loginService")
+	public void setUserService(LoginService ls)
 	{
-		this.userService = us;
+		this.loginService = ls;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String login(Model model) 
 	{
+		System.out.println("ENTROU AQUI NO GET ----------");
 		model.addAttribute("loginTry", new User());
 		//model.put("msg", helloWorldService.getDesc());
 		if(model.containsAttribute("loginError"))
 		{
+			System.out.println("ENTROU AQUI NO ERRO ----------");
 			model.addAttribute("msg", "Invalid Login");
 		}
 		return "index";
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String login(@ModelAttribute User loginTry, ModelMap model) 
+	public ModelAndView login(@ModelAttribute User loginTry, ModelMap model) 
 	{
 		model.addAttribute("loginTry", loginTry);
 		
 		// PRESTAR ATENCAO NA LOGICA AQUIs reynaldo@gmail.com
-		if((this.loggedUser = this.userService.existsUser(loginTry)) != null )
+		if((this.loggedUser = this.loginService.existsUser(loginTry)) != null )
 		{
 			System.out.println("------------------------LOGADO");
-			return "list";
+			return new ModelAndView("list", "userName",this.loggedUser.getName());
 		}
 		else
 		{
 			System.out.println("-----------------------ERRO");
-			model.addAttribute("loginError", true);
-			return "redirect:/";
+			//model.addAttribute("loginError", true);
+			return new ModelAndView("redirect:/", "loginError", true);
 		}
 	}
 	
@@ -69,7 +71,7 @@ public class LoginController
 		{
 			model.addAttribute("userName", this.loggedUser.getName());
 		}
-
+		//System.out.println("-----quantidade de items : " + loggedUser.getShopList().getItems().size());
 		ModelAndView mv = new ModelAndView("list");
 		return mv;
 	}

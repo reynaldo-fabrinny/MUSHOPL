@@ -71,7 +71,7 @@
 	</beans:bean>
 	
 	
-	<beans:bean id="userService" class="service.UserService">
+	<beans:bean id="loginService" class="service.LoginService">
 		<beans:property name="userDao" ref="userDao"></beans:property>
 	</beans:bean>
 	<context:component-scan base-package="controller" />

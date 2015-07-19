@@ -8,7 +8,7 @@ import model.ShopList;
 import model.User;
 
 @Service
-public class UserService 
+public class LoginService 
 {
 	private UserDAOImp userDao;
 	
