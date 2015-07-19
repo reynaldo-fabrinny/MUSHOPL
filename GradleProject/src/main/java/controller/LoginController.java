@@ -1,20 +1,18 @@
 package controller;
  
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-
-//import java.util.Map;
-
-//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import model.Item;
 import model.User;
-//import service.ApplicationService;
 import service.UserService;
  
 @Controller
@@ -22,19 +20,16 @@ public class LoginController
 { 
 	private UserService userService;
 	
+	//TODO ERASE
+	private List<Item> dumpUserList = new ArrayList<Item>();
+	
 	 @Autowired(required=true)
 	 @Qualifier(value="userService")
 	 public void setUserService(UserService us)
 	 {
 		 this.userService = us;
 	 }
-	//private final ApplicationService applicationService;
- 
-//	@Autowired
-//	public MainController(ApplicationService applicationService) {
-//		this.applicationService = applicationService;
-//	}
- 
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String login(ModelMap model) 
 	{
@@ -70,8 +65,8 @@ public class LoginController
 		}
 	}
 	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(ModelMap model) 
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public String list(@ModelAttribute User user, ModelMap model) 
 	{
 		//model.put("title", applicationService.getTitle(""));
 		model.addAttribute("loginTry", new User());
@@ -79,4 +74,15 @@ public class LoginController
  
 		return "list";
 	}
+	@RequestMapping("addItem")
+	public String adiciona(Item item) 
+	{
+		dumpUserList.add(item);
+		System.out.println(item.getName());
+		System.out.println(item.getQuantity());
+	   // JdbcTarefaDao dao = new JdbcTarefaDao();
+	    //dao.adiciona(tarefa);
+	    return "list";
+	}
+	
 }

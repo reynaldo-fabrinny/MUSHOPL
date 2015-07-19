@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.UserDao;
+import model.ShopList;
 import model.User;
 
 @Service
@@ -28,18 +29,22 @@ public class UserService
 	 
 	 /**
 	  * Creates a new user
-	  * @param u
+	  * @param user
 	  */
 	 @Transactional
-	 public void addUser(User u) 
+	 public void addUser(User user) 
 	 {
-		 this.userDao.addUser(u);
+		 this.userDao.addUser(user);
 	 }
 	 
 	 /**
 	  * Return the ShoppingList from the User.
 	  */
-	 //public ShopList getShoppingLit(User user)
+	 public ShopList getShoppingLit(User user)
+	 {
+		 return null;
+		 
+	 }
 	 
 	
 }

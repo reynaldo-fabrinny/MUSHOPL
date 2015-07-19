@@ -18,5 +18,12 @@
 		  </div>
 		  <hr>
 		</div>
+	    <form action="addItem" method="post">
+	      New Item: <br />
+	      <textarea name="name" maxlength="50"  rows="1" cols="15"></textarea><br />
+	      Item Quantity: <br />
+	      <textarea name="quantity" maxlength="3"  rows="1" cols="15"></textarea><br />
+	      <input type="submit" value="Add">
+	    </form>
 	</body>
 </html>

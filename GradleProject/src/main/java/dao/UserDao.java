@@ -3,6 +3,7 @@ package dao;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import model.ShopList;
 import model.User;
 
 @Repository
@@ -13,7 +14,8 @@ public class UserDao
 	//TODO ERASE
 	User dumpDataUser;
 	
-	public void setSessionFactory(SessionFactory sf){
+	public void setSessionFactory(SessionFactory sf)
+	{
         this.sessionFactory = sf;
     }
 	
@@ -21,6 +23,7 @@ public class UserDao
 	{
 		// Checks in the database is the user exists, if it does, returns the User
 		dumpDataUser = new User("reynaldo","reynaldo@gmail.com");
+		
 		return dumpDataUser;
 	}
 	

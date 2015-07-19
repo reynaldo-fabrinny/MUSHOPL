@@ -12,17 +12,14 @@ public class Item
 {
 	@Id
     @GeneratedValue
-    @Column(name="id")
+    @Column(name="ITEM_ID")
 	private Long id;
 	
-	@Column(name="name")
+	@Column(name="NAME")
 	private String name;
 
-	@Column(name="quantity")
+	@Column(name="QUANTITY")
 	private int quantity;
-	
-	@Column(name="bought")
-	private boolean bought;
 	
 	Item(){
 	}
@@ -31,24 +28,11 @@ public class Item
 	{
 		this.name = name;
 		this.quantity = quantity;
-		this.bought = false;
 	}
-
 	Item(String name)
 	{
 		this(name,1);
-
 	}
-	
-	public boolean isBought() 
-	{
-		return bought;
-	}
-	public void setBought(boolean bought) 
-	{
-		this.bought = bought;
-	}
-
 	public String getName() 
 	{
 		return name;
@@ -59,5 +43,9 @@ public class Item
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public void setQuantity(int quantity)
+	{
+		this.quantity = quantity;
 	}
 }

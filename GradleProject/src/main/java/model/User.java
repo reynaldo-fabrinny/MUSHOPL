@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,19 +14,21 @@ public class User
 {
 	@Id
     @GeneratedValue
-    @Column(name="id")
+    @Column(name="USER_ID")
 	private Long id;
 	
-	@Column(name="name")
+	@Column(name="NAME")
 	private String name;
 	 
-	@Column(name="email")
+	@Column(name="EMAIL")
 	private String email;
 	 
-	@Column(name="password")
+	@Column(name="PASSWORD")
 	private String password;
-	  
-	//private ShopList shopList;
+	
+	@OneToOne
+	@JoinColumn(name="SHOPLIST_ID")
+	private ShopList shopList;
 	  
 	public User(){}
 	  
@@ -32,7 +36,7 @@ public class User
 	{
 	  this.name = name;
 	  this.email = email;
-	  //this.shopList = new ShopList();
+	  this.shopList = new ShopList();
 	}
 	  
 	public String getEmail() {
@@ -51,13 +55,9 @@ public class User
 		this.password = password;
 	}
 
-//	public ShopList getShopList() {
-//		return shopList;
-//	}
-//
-//	public void setShopList(ShopList shopList) {
-//		this.shopList = shopList;
-//	}
+	public ShopList getShopList() {
+		return shopList;
+	}
 
 	public String getName() {
 		return name;
