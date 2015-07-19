@@ -20,9 +20,6 @@
 		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/reynaldoFabrinny/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/3cd63d075497751784b2fa84be59432f4905bf7c/javax.servlet-api-3.1.0.jar">
 			<dependency-type>uses</dependency-type>
 		</dependent-module>
-		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/reynaldoFabrinny/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-simple/1.7.7/8095d0b9f7e0a9cd79a663c740e0f8fb31d0e2c8/slf4j-simple-1.7.7.jar">
-			<dependency-type>uses</dependency-type>
-		</dependent-module>
 		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/reynaldoFabrinny/.gradle/caches/modules-2/files-2.1/org.hsqldb/hsqldb/2.2.9/23365fb055315725a8e69777e3d2e1e8a5d4878f/hsqldb-2.2.9.jar">
 			<dependency-type>uses</dependency-type>
 		</dependent-module>
@@ -89,9 +86,6 @@
 		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/reynaldoFabrinny/.gradle/caches/modules-2/files-2.1/org.jboss/jandex/1.1.0.Final/e84a2122e76f0b6503be78094ddf2108057ac15f/jandex-1.1.0.Final.jar">
 			<dependency-type>uses</dependency-type>
 		</dependent-module>
-		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/reynaldoFabrinny/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.7/2b8019b6249bb05d81d3a3094e468753e2b21311/slf4j-api-1.7.7.jar">
-			<dependency-type>uses</dependency-type>
-		</dependent-module>
 		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/reynaldoFabrinny/.gradle/caches/modules-2/files-2.1/commons-pool/commons-pool/1.5.4/75b6e20c596ed2945a259cea26d7fadd298398e6/commons-pool-1.5.4.jar">
 			<dependency-type>uses</dependency-type>
 		</dependent-module>
@@ -123,6 +117,9 @@
 			<dependency-type>uses</dependency-type>
 		</dependent-module>
 		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/reynaldoFabrinny/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/1.8.1.RELEASE/add55d3fa4046f096567e08aee504b1baac25a29/spring-data-commons-1.8.1.RELEASE.jar">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/reynaldoFabrinny/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.7/2b8019b6249bb05d81d3a3094e468753e2b21311/slf4j-api-1.7.7.jar">
 			<dependency-type>uses</dependency-type>
 		</dependent-module>
 		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/reynaldoFabrinny/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.7/56003dcd0a31deea6391b9e2ef2f2dc90b205a92/jcl-over-slf4j-1.7.7.jar">

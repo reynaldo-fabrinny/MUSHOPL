@@ -1,0 +1,4 @@
+/*C2*/SET SCHEMA PUBLIC
+CREATE TABLE user (\u000a  id INTEGER NOT NULL IDENTITY,\u000a  email varchar(45) UNIQUE NOT NULL,\u000a  name varchar(45) NOT NULL,\u000a  password varchar(45) NOT NULL\u000a)
+INSERT INTO USER VALUES(0,'reynaldo@gmail.com','reynaldo','1234')
+COMMIT
