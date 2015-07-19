@@ -3,22 +3,29 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>List</title>
+		<title>Shopping list</title>
 	</head>
 	<body>
-		<div class="container">
-		  <div class="row">
-			<div class="col-md-4">
-				<h2>Heading</h2>
-				<p>ABC</p>
-				<p>
-					<a class="btn btn-default" href="#" role="button">View details</a>
-				</p>
-			</div>
-		  </div>
-		  <hr>
-		</div>
-	    <form action="addItem" method="post">
+		<h2>Shopping List from: ${userName}</h2>
+		<c:if test="${not empty items}">
+		<table border="1" width="15%" cellpadding="1">
+			<tr>
+				<th>Name</th>
+				<th>Quantity</th>
+			</tr>
+			<c:forEach items="${items}" var="item">
+				<tr>
+				<td>${item.name}</td>
+				<td>${item.quantity}</td>
+				</tr>
+			</c:forEach>
+	  	</table>
+	  	</c:if>
+	  	<c:if test="${empty items}">
+	  		User List is Empty
+	  	</c:if>
+	  	</br></br>
+	    <form class="addItem" action="list" method="post">
 	      New Item: <br />
 	      <textarea name="name" maxlength="50"  rows="1" cols="15"></textarea><br />
 	      Item Quantity: <br />

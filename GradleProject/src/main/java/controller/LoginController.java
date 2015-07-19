@@ -6,10 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import model.Item;
 import model.User;
@@ -66,23 +68,21 @@ public class LoginController
 	}
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String list(@ModelAttribute User user, ModelMap model) 
+	public ModelAndView listItems(Model model) 
 	{
 		//model.put("title", applicationService.getTitle(""));
-		model.addAttribute("loginTry", new User());
+		model.addAttribute("items", dumpUserList);
 		//model.put("msg", helloWorldService.getDesc());
- 
-		return "list";
+		ModelAndView mv = new ModelAndView("list");
+		return mv;
 	}
-	@RequestMapping("addItem")
-	public String adiciona(Item item) 
+	@RequestMapping("list")
+	public String addItem(Item item) 
 	{
 		dumpUserList.add(item);
-		System.out.println(item.getName());
-		System.out.println(item.getQuantity());
 	   // JdbcTarefaDao dao = new JdbcTarefaDao();
 	    //dao.adiciona(tarefa);
-	    return "list";
+	    return "redirect:list";
 	}
 	
 }
