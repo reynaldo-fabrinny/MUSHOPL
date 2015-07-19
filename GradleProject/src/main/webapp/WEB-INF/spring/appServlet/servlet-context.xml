@@ -26,15 +26,6 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<!-- <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		destroy-method="close">
-		<beans:property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-		<beans:property name="url"
-			value="jdbc:hsqldb:hsql://localhost/testdb" />
-		<beans:property name="username" value="sa" />
-		<beans:property name="password" value="" />
-	</beans:bean> -->
-	
 	<!-- HSQLDB Data Source -->        
     <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<beans:property name="driverClassName" value="org.hsqldb.jdbcDriver" />

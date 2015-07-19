@@ -34,8 +34,9 @@ public class LoginController
 	public String login(Model model) 
 	{
 		System.out.println("ENTROU AQUI NO GET ----------");
-		model.addAttribute("loginTry", new User());
-		//model.put("msg", helloWorldService.getDesc());
+		System.out.println("VALOR DO ERRO LOGIN " + model.containsAttribute("loginError"));
+		//model.addAttribute("loginTry", new User());
+	
 		if(model.containsAttribute("loginError"))
 		{
 			System.out.println("ENTROU AQUI NO ERRO ----------");
@@ -45,9 +46,10 @@ public class LoginController
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute User loginTry, ModelMap model) 
+	public ModelAndView login(@ModelAttribute User loginTry, Model model) 
 	{
 		model.addAttribute("loginTry", loginTry);
+		System.out.println("PASSOU PELO AQUI NO POST ----------");
 		
 		// PRESTAR ATENCAO NA LOGICA AQUIs reynaldo@gmail.com
 		if((this.loggedUser = this.loginService.existsUser(loginTry)) != null )
@@ -59,7 +61,8 @@ public class LoginController
 		{
 			System.out.println("-----------------------ERRO");
 			//model.addAttribute("loginError", true);
-			return new ModelAndView("redirect:/", "loginError", true);
+
+			return new ModelAndView("redirect:/");
 		}
 	}
 	
