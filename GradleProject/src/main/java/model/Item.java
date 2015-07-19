@@ -1,19 +1,27 @@
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="ITEM")
 public class Item 
 {
 	@Id
     @GeneratedValue
+    @Column(name="id")
 	private Long id;
 	
+	@Column(name="name")
 	private String name;
+
+	@Column(name="quantity")
 	private int quantity;
-	private String brand;
+	
+	@Column(name="bought")
 	private boolean bought;
 	
 	Item(){
@@ -29,6 +37,7 @@ public class Item
 	Item(String name)
 	{
 		this(name,1);
+
 	}
 	
 	public boolean isBought() 
@@ -39,14 +48,7 @@ public class Item
 	{
 		this.bought = bought;
 	}
-	public String getBrand() 
-	{
-		return brand;
-	}
-	public void setBrand(String brand) 
-	{
-		this.brand = brand;
-	}
+
 	public String getName() 
 	{
 		return name;
@@ -54,5 +56,8 @@ public class Item
 	public int getQuantity() 
 	{
 		return quantity;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

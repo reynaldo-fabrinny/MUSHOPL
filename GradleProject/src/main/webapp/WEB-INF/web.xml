@@ -33,7 +33,7 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
- 
+ 	
 	<!-- For root context -->
 	<listener>
 		<listener-class>

@@ -11,7 +11,7 @@ public class ShopList
 {
 	@Id
     @GeneratedValue
-	private Long id;
+	private Integer id;
 	
 	private final ArrayList<Item> items;
 	
