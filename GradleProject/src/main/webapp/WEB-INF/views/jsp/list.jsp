@@ -27,11 +27,11 @@
 	  	</br>
 	  	</br>
 	    <form class="addItem" action="list" method="post">
-	      New Item: <br />
-	      <input type="text" name="name" maxlength="50"><br />
-	      Item Quantity: <br />
-	      <input name="quantity" type="number" min="0"  maxlength="3"><br />
-	      <input type="submit" value="Add">
+		      New Item: <br />
+		      <input type="text" name="name" maxlength="50"><br />
+		      Item Quantity: <br />
+		      <input name="quantity" type="number" min="0"  maxlength="3"><br />
+		      <input type="submit" value="Add">
 	    </form>
 	</body>
 </html>

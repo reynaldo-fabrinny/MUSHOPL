@@ -11,7 +11,7 @@
 	            <table border="1" width="30%" cellpadding="3">
 	                <thead>
 	                    <tr>
-	                        <th colspan="2">Login Here</th>
+	                        <th colspan="2">Mushopl Login</th>
 	                    </tr>
 	                </thead>
 	                <tbody>

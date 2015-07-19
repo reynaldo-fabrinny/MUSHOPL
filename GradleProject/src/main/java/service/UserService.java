@@ -40,7 +40,7 @@ public class UserService
 	 /**
 	  * Return the ShoppingList from the User.
 	  */
-	 public ShopList getShoppingLit(User user)
+	 public ShopList getShoppingList(User user)
 	 {
 		 return null;
 		 

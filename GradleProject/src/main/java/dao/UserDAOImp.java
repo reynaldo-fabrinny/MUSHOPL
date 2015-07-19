@@ -48,6 +48,16 @@ public class UserDAOImp implements UserDAO
       //  hibernateTemplate.save(user2);
       //  return user.getId();
     }
+
+	@Override
+	public void addItemInTheList(User user, Item item) 
+	{
+		//Session session = this.sessionFactory.getCurrentSession();
+			//GET THE USER AND ADD ONE ITEM IN HIS LIST
+		
+		// TODO Auto-generated method stub
+		
+	}
      
 //    public List<User>getAll() {
 //        return em.createQuery("SELECT p FROM User p", User.class).getResultList();

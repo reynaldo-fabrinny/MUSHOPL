@@ -12,13 +12,13 @@ public class Item
 {
 	@Id
     @GeneratedValue
-    @Column(name="ITEM_ID")
+    @Column(name="ITEM_ID", nullable = false)
 	private Long id;
 	
-	@Column(name="NAME")
+	@Column(name="NAME", nullable = false)
 	private String name;
 
-	@Column(name="QUANTITY")
+	@Column(name="QUANTITY", nullable = false)
 	private int quantity;
 	
 	Item(){

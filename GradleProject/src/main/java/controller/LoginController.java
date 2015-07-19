@@ -23,23 +23,22 @@ public class LoginController
 	private UserService userService;
 	private User loggedUser;
 	
-	//TODO ERASE
-	private List<Item> dumpUserList = new ArrayList<Item>();
-	
-	 @Autowired(required=true)
-	 @Qualifier(value="userService")
-	 public void setUserService(UserService us)
-	 {
-		 this.userService = us;
-	 }
+	@Autowired(required=true)
+	@Qualifier(value="userService")
+	public void setUserService(UserService us)
+	{
+		this.userService = us;
+	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String login(ModelMap model) 
+	public String login(Model model) 
 	{
-		//model.put("title", applicationService.getTitle(""));
 		model.addAttribute("loginTry", new User());
 		//model.put("msg", helloWorldService.getDesc());
- 
+		if(model.containsAttribute("loginError"))
+		{
+			model.addAttribute("msg", "Invalid Login");
+		}
 		return "index";
 	}
 	
@@ -47,9 +46,8 @@ public class LoginController
 	public String login(@ModelAttribute User loginTry, ModelMap model) 
 	{
 		model.addAttribute("loginTry", loginTry);
-		System.out.println(loginTry.getEmail() + "  pegou o valor do user ");
 		
-		// PRESTAR ATENCAO NA LOGICA AQUIs
+		// PRESTAR ATENCAO NA LOGICA AQUIs reynaldo@gmail.com
 		if((this.loggedUser = this.userService.existsUser(loginTry)) != null )
 		{
 			System.out.println("------------------------LOGADO");
@@ -58,8 +56,7 @@ public class LoginController
 		else
 		{
 			System.out.println("-----------------------ERRO");
-			model.addAttribute("msg", "Invalid Login");
-			
+			model.addAttribute("loginError", true);
 			return "redirect:/";
 		}
 	}
@@ -67,8 +64,11 @@ public class LoginController
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView listItems(Model model) 
 	{
-		model.addAttribute("items", dumpUserList);
-		model.addAttribute("userName","rey");
+		model.addAttribute("items", this.loggedUser.getShopList().getItems());
+		if(this.loggedUser != null )
+		{
+			model.addAttribute("userName", this.loggedUser.getName());
+		}
 
 		ModelAndView mv = new ModelAndView("list");
 		return mv;
@@ -76,9 +76,7 @@ public class LoginController
 	@RequestMapping("list")
 	public String addItem(Item item) 
 	{
-		dumpUserList.add(item);
-	   // JdbcTarefaDao dao = new JdbcTarefaDao();
-	    //dao.adiciona(tarefa);
+		this.loggedUser.getShopList().addItem(item);
 	    return "redirect:list";
 	}
 	

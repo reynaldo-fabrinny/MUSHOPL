@@ -1,5 +1,8 @@
 package dao;
 
-public interface itemDAO {
+import model.User;
 
+public interface itemDAO 
+{
+	public void addItem(User user);
 }

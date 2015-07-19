@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,25 +16,24 @@ public class ShopList
 {
 	@Id
     @GeneratedValue
-    @Column(name="SHOPLIST_ID")
+    @Column(name="SHOPLIST_ID", nullable = false)
 	private Long id;
 	
-//	@OneToMany
-//	@JoinColumn(name="ITEM_ID")
-//	private final ArrayList<Item> items;
+	private final ArrayList<Item> items;
 	
 	public ShopList()
 	{
-	//	this.items = new ArrayList<Item>();
+		this.items = new ArrayList<Item>();
 	}
 	
-//	public ArrayList<Item> getItems()
-//	{
-//		return this.items;
-//	}
-//	
-//	public void addItem(final Item item) 
-//	{
-//		this.items.add(item);
-//	}
+	@OneToMany(mappedBy="ITEM", fetch=FetchType.EAGER)
+	public ArrayList<Item> getItems()
+	{
+		return this.items;
+	}
+	
+	public void addItem(final Item item) 
+	{
+		this.items.add(item);
+	}
 }

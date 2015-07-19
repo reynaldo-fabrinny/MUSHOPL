@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,23 +9,25 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="USER")
+@Table(name="USER", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "EMAIL")})
 public class User 
 {
 	@Id
     @GeneratedValue
-    @Column(name="USER_ID")
+    @Column(name="USER_ID", nullable = false)
 	private Long id;
 	
-	@Column(name="NAME")
+	@Column(name="NAME", nullable = false)
 	private String name;
 	 
-	@Column(name="EMAIL")
+	@Column(name="EMAIL", nullable = false)
 	private String email;
 	 
-	@Column(name="PASSWORD")
+	@Column(name="PASSWORD", nullable = false)
 	private String password;
 	
 	@OneToOne
