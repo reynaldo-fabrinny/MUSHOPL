@@ -4,8 +4,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.UserDAOImp;
-import model.Item;
-import model.ShopList;
 import model.User;
 
 @Service
@@ -15,7 +13,7 @@ public class LoginService
 	
 	 public void setUserDao(UserDAOImp userDao) 
 	 {
-	        this.userDao = userDao;
+		 this.userDao = userDao;
 	 }
 	 
 	 /**
@@ -30,29 +28,12 @@ public class LoginService
 	 }
 	 
 	 /**
-	  * Creates a new user
+	  * Updates the user passed as parameter
 	  * @param user
 	  */
-	 @Transactional
-	 public void createUser(User user) 
-	 {
-		 this.userDao.createUser(user);
-	 }
-	 
 	 @Transactional
 	 public void updateUser(User user) 
 	 {
 		 this.userDao.saveOrUpdateUser(user);
 	 }
-	 
-	 /**
-	  * Return the ShoppingList from the User.
-	  */
-	 public ShopList getShoppingList(User user)
-	 {
-		 return null;
-		 
-	 }
-	 
-	
 }

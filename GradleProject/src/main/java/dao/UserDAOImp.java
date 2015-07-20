@@ -21,7 +21,6 @@ public class UserDAOImp implements UserDAO
 	
 	public User findUser(User user)
 	{
-		
 		/*
 		 * Query query = session.createSQLQuery(
 			"select * from user where email= :email").addEntity(User.class).setParameter("email", user.getEmail());
@@ -46,16 +45,6 @@ public class UserDAOImp implements UserDAO
 		
 		return dbUser;
 	}
-	
-	/**
-	 * TODO
-	 * Version 2.0
-	 */
-    public void createUser(User user) 
-    {
-        Session session = this.sessionFactory.getCurrentSession();
-        session.persist(user);
-    }
     
     /**
      * Receive a user as parameter and update it in the database

@@ -29,9 +29,6 @@ public class ShopList
 	inverseJoinColumns={@JoinColumn(name="ITEM_ID", referencedColumnName="ITEM_ID")}) 
 	private final List<Item> items;
 	
-	//@OneToMany(mappedBy = "shopList", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	//private final List<Item> items;
-	
 	public ShopList()
 	{
 		this.items = new ArrayList<Item>();
@@ -44,18 +41,9 @@ public class ShopList
 	
 	public void addItem(Item... items) 
 	{
-		//item.setShopList(this);
-		
 		for (int i = 0; i < items.length; i++) 
 		{
 			this.getItems().add(items[i]);
 		}
-		//this.getItems().addAll(item);
-	}
-	
-	//TODO ERASE, TO TEST ONLY
-	public Long getId()
-	{
-		return this.getId();
 	}
 }
