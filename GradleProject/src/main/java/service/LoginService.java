@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.UserDAOImp;
+import model.Item;
 import model.ShopList;
 import model.User;
 
@@ -22,6 +23,7 @@ public class LoginService
 	  * returns the complete User if it does.
 	  * returns null if it doesn't.
 	  */
+	 @Transactional
 	 public User existsUser(User user)
 	 {
 		 return this.userDao.existsUser(user);
@@ -32,9 +34,15 @@ public class LoginService
 	  * @param user
 	  */
 	 @Transactional
-	 public void addUser(User user) 
+	 public void createUser(User user) 
 	 {
-		 this.userDao.addUser(user);
+		 this.userDao.createUser(user);
+	 }
+	 
+	 @Transactional
+	 public void updateUser(User user) 
+	 {
+		 this.userDao.updateUser(user);
 	 }
 	 
 	 /**

@@ -1,7 +1,9 @@
 package dao;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import model.Item;
@@ -12,9 +14,6 @@ public class UserDAOImp implements UserDAO
 {
 	private SessionFactory sessionFactory;
 	
-	//TODO ERASE
-	private User dumpDataUser = new User("reynaldo","reynaldo@gmail.com","1234");
-	
 	public void setSessionFactory(SessionFactory sf)
 	{
         this.sessionFactory = sf;
@@ -22,16 +21,29 @@ public class UserDAOImp implements UserDAO
 	
 	public User existsUser(User user)
 	{
-		// Checks in the database is the user exists, if it does, returns the User
-		if (user.getEmail().equals(dumpDataUser.getEmail()) && user.getPassword().equals(dumpDataUser.getPassword()) ){
-			return dumpDataUser;
-		}
-		return null;
+		
+		/*
+		 * Query query = session.createSQLQuery(
+			"select * from user where email= :email").addEntity(User.class).setParameter("email", user.getEmail());
+			List result = query.list();
+		 */
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.eq("email", user.getEmail()));
+		criteria.add(Restrictions.eq("password", user.getPassword()));
+		User dbUser = (User) criteria.uniqueResult();
+		
+		return dbUser;
 	}
 	
-    public void addUser(User u) 
+	/**
+	 * Version 2.0
+	 */
+    public void createUser(User u) 
     {
-       User user2 = new User("name", "email");
+       //User user2 = new User("name", "email");
         
         
         Session session = this.sessionFactory.getCurrentSession();
@@ -40,7 +52,6 @@ public class UserDAOImp implements UserDAO
      //   System.out.println("sessao " + session);
         System.out.println(session.get(Item.class, a));
       //  session.save(user2);
-      // Query createQuery = session.createQuery("create table aa  (id INTEGER NOT NULL IDENTITY)");
        // Query createQuery = session.createQuery("SELECT * FROM INFORMATION_SCHEMA.TABLES");
       // createQuery.executeUpdate();
        //System.out.println(object.getEmail());
@@ -49,17 +60,12 @@ public class UserDAOImp implements UserDAO
       //  return user.getId();
     }
 
-	@Override
-	public void addItemInTheList(User user, Item item) 
+    /**
+     * Receive a user as parameter and update it in the database
+     */
+	public void updateUser(final User user) 
 	{
-		//Session session = this.sessionFactory.getCurrentSession();
-			//GET THE USER AND ADD ONE ITEM IN HIS LIST
-		
-		// TODO Auto-generated method stub
-		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.saveOrUpdate(user);
 	}
-     
-//    public List<User>getAll() {
-//        return em.createQuery("SELECT p FROM User p", User.class).getResultList();
-//    }
 }

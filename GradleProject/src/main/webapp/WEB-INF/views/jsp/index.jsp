@@ -19,7 +19,7 @@
 							${msg}
 						</c:if>
 	                    <tr>
-	                        <td>Username/E-mail</td>
+	                        <td>E-mail</td>
 	                        <td><input type="text" name="email" size=15 /></td>
 	                    </tr>
 	                    <tr>

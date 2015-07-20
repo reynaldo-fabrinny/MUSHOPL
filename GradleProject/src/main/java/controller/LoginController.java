@@ -1,13 +1,9 @@
 package controller;
- 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +14,7 @@ import model.User;
 import service.LoginService;
  
 @Controller
-public class LoginController 
+public class LoginController  extends AbstractController
 { 
 	private LoginService loginService;
 	private User loggedUser;
@@ -30,14 +26,12 @@ public class LoginController
 		this.loginService = ls;
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = ROOT, method = RequestMethod.GET)
 	public String login(Model model) 
 	{
 		System.out.println("ENTROU AQUI NO GET ----------");
-		System.out.println("VALOR DO ERRO LOGIN " + model.containsAttribute("loginError"));
-		//model.addAttribute("loginTry", new User());
 	
-		if(model.containsAttribute("loginError"))
+		if(model.containsAttribute("msg"))
 		{
 			System.out.println("ENTROU AQUI NO ERRO ----------");
 			model.addAttribute("msg", "Invalid Login");
@@ -45,14 +39,12 @@ public class LoginController
 		return "index";
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = ROOT, method = RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute User loginTry, Model model) 
 	{
 		model.addAttribute("loginTry", loginTry);
-		System.out.println("PASSOU PELO AQUI NO POST ----------");
 		
-		// PRESTAR ATENCAO NA LOGICA AQUIs reynaldo@gmail.com
-		if((this.loggedUser = this.loginService.existsUser(loginTry)) != null )
+		if((this.loggedUser = this.loginService.existsUser(loginTry)) != null)
 		{
 			System.out.println("------------------------LOGADO");
 			return new ModelAndView("list", "userName",this.loggedUser.getName());
@@ -60,9 +52,9 @@ public class LoginController
 		else
 		{
 			System.out.println("-----------------------ERRO");
-			//model.addAttribute("loginError", true);
+		//	model.addAttribute("msg", "Invalid Login");
 
-			return new ModelAndView("redirect:/");
+			return new ModelAndView(REDIRECT_PREFIX + ROOT);
 		}
 	}
 	
@@ -74,15 +66,16 @@ public class LoginController
 		{
 			model.addAttribute("userName", this.loggedUser.getName());
 		}
-		//System.out.println("-----quantidade de items : " + loggedUser.getShopList().getItems().size());
 		ModelAndView mv = new ModelAndView("list");
 		return mv;
 	}
+	
 	@RequestMapping("list")
 	public String addItem(Item item) 
 	{
 		this.loggedUser.getShopList().addItem(item);
-	    return "redirect:list";
+		this.loginService.updateUser(this.loggedUser);
+	    return REDIRECT_PREFIX + "list";
 	}
 	
 }

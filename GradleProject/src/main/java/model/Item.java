@@ -1,9 +1,13 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,15 +25,18 @@ public class Item
 	@Column(name="QUANTITY", nullable = false)
 	private int quantity;
 	
-	Item(){
-	}
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)  
+	@JoinColumn(name ="SHOPLIST_ID")
+	private ShopList shopList;
+	
+	Item(){}
 	
 	Item(final String name, final int quantity) 
 	{
 		this.name = name;
 		this.quantity = quantity;
 	}
-	Item(String name)
+	Item(final String name)
 	{
 		this(name,1);
 	}
@@ -47,5 +54,13 @@ public class Item
 	public void setQuantity(int quantity)
 	{
 		this.quantity = quantity;
+	}
+	public ShopList	getShopList()
+	{
+		return shopList;
+	}
+	public void setShopList(ShopList shopList)
+	{
+		this.shopList = shopList;
 	}
 }
