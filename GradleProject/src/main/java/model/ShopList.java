@@ -42,10 +42,15 @@ public class ShopList
 		return this.items;
 	}
 	
-	public void addItem(final Item item) 
+	public void addItem(Item... items) 
 	{
 		//item.setShopList(this);
-		this.getItems().add(item);
+		
+		for (int i = 0; i < items.length; i++) 
+		{
+			this.getItems().add(items[i]);
+		}
+		//this.getItems().addAll(item);
 	}
 	
 	//TODO ERASE, TO TEST ONLY

@@ -36,16 +36,16 @@ public class User
 	  
 	public User(){}
 	  
-	public User(String name, String email)
+	public User(String email, String password)
 	{
-	  this.name = name;
-	  this.email = email;
-	  this.shopList = new ShopList();
+		this.password = password;
+		this.email = email;
+		this.shopList = new ShopList();
 	}
 	public User(String name, String email, String password)
 	{
-		this(name, email);
-		this.password = password;
+		this(email, password);
+		this.name = name;
 	}
 	  
 	public String getEmail() {

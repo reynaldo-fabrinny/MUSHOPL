@@ -31,7 +31,7 @@ public class Item
 	
 	Item(){}
 	
-	Item(final String name, final int quantity) 
+	public Item(final String name, final int quantity) 
 	{
 		this.name = name;
 		this.quantity = quantity;

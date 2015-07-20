@@ -5,7 +5,7 @@ import model.User;
 
 public interface UserDAO
 {
-	public User existsUser(User user);
+	public User findUser(User user);
 	public void createUser(User user);
-	public void updateUser(User user);
+	public void saveOrUpdateUser(User user);
 }

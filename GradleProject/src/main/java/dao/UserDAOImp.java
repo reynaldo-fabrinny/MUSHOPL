@@ -19,7 +19,7 @@ public class UserDAOImp implements UserDAO
         this.sessionFactory = sf;
     }
 	
-	public User existsUser(User user)
+	public User findUser(User user)
 	{
 		
 		/*
@@ -27,12 +27,21 @@ public class UserDAOImp implements UserDAO
 			"select * from user where email= :email").addEntity(User.class).setParameter("email", user.getEmail());
 			List result = query.list();
 		 */
-		
 		Session session = this.sessionFactory.getCurrentSession();
 		
 		Criteria criteria = session.createCriteria(User.class);
 		criteria.add(Restrictions.eq("email", user.getEmail()));
 		criteria.add(Restrictions.eq("password", user.getPassword()));
+		User dbUser = (User) criteria.uniqueResult();
+		
+		return dbUser;
+	}
+	public User findUser(String email)
+	{
+		Session session = this.sessionFactory.getCurrentSession();
+		
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.eq("email", email));
 		User dbUser = (User) criteria.uniqueResult();
 		
 		return dbUser;
@@ -47,21 +56,12 @@ public class UserDAOImp implements UserDAO
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(user);
     }
-
+    
     /**
      * Receive a user as parameter and update it in the database
      */
-	public void updateUser(final User user) 
+	public void saveOrUpdateUser(final User user) 
 	{
-		Session session = this.sessionFactory.getCurrentSession();
-		
-		System.out.println("---- - - - - DADOS ----------");
-		System.out.println("user shoplist" + user.getShopList());
-		System.out.println("");
-		System.out.println("");
-		
-		
-		
-		session.saveOrUpdate(user);
+		this.sessionFactory.getCurrentSession().saveOrUpdate(user);
 	}
 }

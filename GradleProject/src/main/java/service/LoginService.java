@@ -26,7 +26,7 @@ public class LoginService
 	 @Transactional
 	 public User existsUser(User user)
 	 {
-		 return this.userDao.existsUser(user);
+		 return this.userDao.findUser(user);
 	 }
 	 
 	 /**
@@ -42,7 +42,7 @@ public class LoginService
 	 @Transactional
 	 public void updateUser(User user) 
 	 {
-		 this.userDao.updateUser(user);
+		 this.userDao.saveOrUpdateUser(user);
 	 }
 	 
 	 /**
