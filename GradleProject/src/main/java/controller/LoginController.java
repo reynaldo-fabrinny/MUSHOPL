@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,18 +27,18 @@ public class LoginController  extends AbstractController
 		this.loginService = ls;
 	}
 
-	@RequestMapping(value = ROOT, method = RequestMethod.GET)
-	public String login(Model model) 
-	{
-		System.out.println("ENTROU AQUI NO GET ----------");
-	
-		if(model.containsAttribute("msg"))
-		{
-			System.out.println("ENTROU AQUI NO ERRO ----------");
-			model.addAttribute("msg", "Invalid Login");
-		}
-		return "index";
-	}
+//	@RequestMapping(value = ROOT, method = RequestMethod.GET)
+//	public String login(Model model) 
+//	{
+//		System.out.println("ENTROU AQUI NO GET ----------");
+//	
+//		if(model.containsAttribute("msg"))
+//		{
+//			System.out.println("ENTROU AQUI NO ERRO ----------");
+//			model.addAttribute("msg", "Invalid Login");
+//		}
+//		return "index";
+//	}
 	
 	@RequestMapping(value = ROOT, method = RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute User loginTry, Model model) 
@@ -57,6 +58,22 @@ public class LoginController  extends AbstractController
 			return new ModelAndView(REDIRECT_PREFIX + ROOT);
 		}
 	}
+
+	
+	@RequestMapping(value="/", method = RequestMethod.GET)
+	public String customLogin(ModelMap map) {
+ 		return "index";
+ 	}
+	@RequestMapping(value="/loginSuccess", method = RequestMethod.GET)
+	public String success(ModelMap map) {
+		map.addAttribute("msg", "Successfully logged in");
+		return "success";
+	}
+	
+	
+	
+	
+	//--------------  LIST --------
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView listItems(Model model) 

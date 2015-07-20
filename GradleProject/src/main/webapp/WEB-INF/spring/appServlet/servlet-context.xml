@@ -19,8 +19,7 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
-	<beans:bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 		<beans:property name="prefix" value="/WEB-INF/views/jsp/" />
 		<beans:property name="suffix" value=".jsp" />
@@ -53,7 +52,7 @@
 			<beans:props>
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</beans:prop>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
-				<beans:prop key="hibernate.hbm2ddl.auto">create-update</beans:prop>
+				<beans:prop key="hibernate.hbm2ddl.auto">create</beans:prop>
 			</beans:props>
 		</beans:property>
 	</beans:bean>
@@ -65,7 +64,9 @@
 	<beans:bean id="loginService" class="service.LoginService">
 		<beans:property name="userDao" ref="userDao"></beans:property>
 	</beans:bean>
-	<context:component-scan base-package="controller" />
+	
+	<!-- <context:component-scan base-package="controller" /> -->
+	<context:component-scan base-package="com.concretepage.security.controller" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	

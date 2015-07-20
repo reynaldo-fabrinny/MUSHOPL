@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div class="container">
-		   <form method="post" action="">
+		   <form name="form" method="post" action="j_spring_security_check">
 	            <table border="1" width="30%" cellpadding="3">
 	                <thead>
 	                    <tr>
@@ -15,8 +15,11 @@
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                	<c:if test="${not empty msg}">
-							${msg}
+	                	<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+						      <font color="red">
+						        Your login attempt was not successful due to <br/><br/>
+						        <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+						      </font>
 						</c:if>
 	                    <tr>
 	                        <td>E-mail</td>
@@ -27,7 +30,7 @@
 	                        <td><input type="password" name="password" value="" size=15 /></td>
 	                    </tr>
 	                    <tr>
-	                        <td><input type="submit" value="Submit" /></td>
+	                        <td><input name="submit" type="submit" value="Login" /></td>
 	                    </tr>
 	                </tbody>
 	            </table>

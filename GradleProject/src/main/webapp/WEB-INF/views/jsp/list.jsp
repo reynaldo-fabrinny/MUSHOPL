@@ -33,5 +33,8 @@
 		      <input name="quantity" type="number" min="0"  maxlength="3"><br />
 		      <input type="submit" value="Add">
 	    </form>
+	    <form class="logoutButton" method="post" action="logout">
+	    	<input type="submit" value="Submit" />
+	    </form>
 	</body>
 </html>
