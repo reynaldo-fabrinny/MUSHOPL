@@ -73,7 +73,17 @@ public class LoginController  extends AbstractController
 	@RequestMapping("list")
 	public String addItem(Item item) 
 	{
+		System.out.println("----------------------- logedUser id " + this.loggedUser.getId());
+		System.out.println("-----------------------logedUser shop List " + this.loggedUser.getShopList());
+		System.out.println("-----------------------item name " +  item.getName());
+		
+		
 		this.loggedUser.getShopList().addItem(item);
+		
+		System.out.println("-----------------------logedUser shop List " + this.loggedUser.getShopList());
+		System.out.println("-----------------------item name " +  item.getShopList());
+		
+		
 		this.loginService.updateUser(this.loggedUser);
 	    return REDIRECT_PREFIX + "list";
 	}

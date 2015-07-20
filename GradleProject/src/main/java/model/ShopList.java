@@ -38,6 +38,15 @@ public class ShopList
 	{
 		System.out.println("lista de items:" + this.items);
 		System.out.println("tamanho lista de items:" + this.items.size());
+		System.out.println("items shoplogin ANTES " + item.getShopList());
+		item.setShopList(this);
 		this.getItems().add(item);
+		System.out.println("items shoplogin DEPOIS " + item.getShopList());
+	}
+	
+	//TODO ERASE, TO TEST ONLY
+	public Long getId()
+	{
+		return this.getId();
 	}
 }

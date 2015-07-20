@@ -66,6 +66,14 @@ public class UserDAOImp implements UserDAO
 	public void updateUser(final User user) 
 	{
 		Session session = this.sessionFactory.getCurrentSession();
+		
+		System.out.println("---- - - - - DADOS ----------");
+		System.out.println("user shoplist" + user.getShopList());
+		System.out.println("");
+		System.out.println("");
+		
+		
+		
 		session.saveOrUpdate(user);
 	}
 }
