@@ -1,22 +1,14 @@
 package org.gradle;
 
-import org.junit.Test;
-
-import dao.UserDAOImp;
-import model.User;
-import service.LoginService;
-
-import static org.junit.Assert.*;
-import java.util.Properties;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.hibernate.SessionFactory;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.Test;
+
+import dao.UserDAOImp;
+import model.User;
 
 public class Tests 
 {
@@ -31,18 +23,14 @@ public class Tests
         em = emf.createEntityManager();
         em.getTransaction().begin();
 	}
-	//@AfterClass 
-	
-	
 	
 	@Test
     public void canConstructAPersonWithAName() 
 	{
-      //  Person person = new Person("Larry");
        // assertEquals("Larry", person.getName());
 		
 		
-		UserDAOImp s= new UserDAOImp();
+		UserDAOImp s = new UserDAOImp();
 		s.createUser(new User("reynaldo","reynaldo@gmail.com","1234"));
     }
 	

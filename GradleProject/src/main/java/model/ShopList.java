@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,8 +23,14 @@ public class ShopList
     @Column(name="SHOPLIST_ID", nullable = false)
 	private Long id;
 	
-	@OneToMany(mappedBy = "shopList", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name="item_shoplist",
+	joinColumns={@JoinColumn(name="SHOPLIST_ID", referencedColumnName="SHOPLIST_ID")},
+	inverseJoinColumns={@JoinColumn(name="ITEM_ID", referencedColumnName="ITEM_ID")}) 
 	private final List<Item> items;
+	
+	//@OneToMany(mappedBy = "shopList", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	//private final List<Item> items;
 	
 	public ShopList()
 	{
@@ -36,12 +44,8 @@ public class ShopList
 	
 	public void addItem(final Item item) 
 	{
-		System.out.println("lista de items:" + this.items);
-		System.out.println("tamanho lista de items:" + this.items.size());
-		System.out.println("items shoplogin ANTES " + item.getShopList());
-		item.setShopList(this);
+		//item.setShopList(this);
 		this.getItems().add(item);
-		System.out.println("items shoplogin DEPOIS " + item.getShopList());
 	}
 	
 	//TODO ERASE, TO TEST ONLY
