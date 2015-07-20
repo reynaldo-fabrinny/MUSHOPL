@@ -1,37 +1,42 @@
 package org.gradle;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import org.junit.Before;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.context.internal.ThreadLocalSessionContext;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import dao.UserDAOImp;
 import model.User;
 
+@SuppressWarnings("deprecation")
 public class Tests 
 {
-	private EntityManagerFactory emf;
-    private EntityManager em;
-	
-	@Before
-	public void setUp()
+	 private static Configuration config;
+     private static SessionFactory factory;
+     private static Session hibernateSession;
+     
+     @BeforeClass
+     public static  void init() {
+         config = new AnnotationConfiguration();
+         config.configure("/META-INF/hibernateJUnitConfig.xml");
+         config.setProperty("hibernate.current_session_context_class", "thread");
+	     factory = config.buildSessionFactory();
+	     hibernateSession = factory.openSession();
+	     
+	     ThreadLocalSessionContext.bind(hibernateSession);
+	 }
+   
+	@Test(expected = org.hibernate.exception.ConstraintViolationException.class)
+    public void canHaveUsersWithSameEmail() 
 	{
-	 
-        emf = Persistence.createEntityManagerFactory("jpaData");
-        em = emf.createEntityManager();
-        em.getTransaction().begin();
-	}
-	
-	@Test
-    public void canConstructAPersonWithAName() 
-	{
-       // assertEquals("Larry", person.getName());
-		
-		
 		UserDAOImp s = new UserDAOImp();
-		s.createUser(new User("reynaldo","reynaldo@gmail.com","1234"));
+		s.setSessionFactory(factory);
+		
+		s.updateUser(new User("Pedro","reynaldo@gmail.com","1234"));
+		s.updateUser(new User("reynaldo","reynaldo@gmail.com","1234"));
     }
 	
 	@Test
@@ -42,10 +47,11 @@ public class Tests
 	@Test
     public void createItemNegativeQuantity() 
 	{
+		UserDAOImp s = new UserDAOImp();
+		s.setSessionFactory(factory);
+		
+		//s.updateUser(new User("Pedro","reynaldo@gmail.com","1234"));
+		
     }
 	
-	@Test
-    public void createUserWithExistentEmail() 
-	{
-    }
 }

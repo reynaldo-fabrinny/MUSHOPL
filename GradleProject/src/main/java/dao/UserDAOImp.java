@@ -39,25 +39,13 @@ public class UserDAOImp implements UserDAO
 	}
 	
 	/**
+	 * TODO
 	 * Version 2.0
 	 */
-    public void createUser(User u) 
+    public void createUser(User user) 
     {
-       //User user2 = new User("name", "email");
-        
-        
         Session session = this.sessionFactory.getCurrentSession();
-        //session.persist(user2);
-        long a = 0;
-     //   System.out.println("sessao " + session);
-        System.out.println(session.get(Item.class, a));
-      //  session.save(user2);
-       // Query createQuery = session.createQuery("SELECT * FROM INFORMATION_SCHEMA.TABLES");
-      // createQuery.executeUpdate();
-       //System.out.println(object.getEmail());
-        
-      //  hibernateTemplate.save(user2);
-      //  return user.getId();
+        session.persist(user);
     }
 
     /**
