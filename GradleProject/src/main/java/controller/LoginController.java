@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import service.LoginService;
  
 @Controller
-public class LoginController  extends AbstractController
+public class LoginController extends AbstractController
 { 
 	private LoginService loginService;
 	private User loggedUser;
@@ -30,7 +30,7 @@ public class LoginController  extends AbstractController
 	}
 
 //	//MINHA TENTATIVA
-//	@RequestMapping(value = ROOT, method = RequestMethod.GET)
+//	@RequestMapping(value = {ROOT, "/login"}, method = RequestMethod.GET)
 //	public String login(Model model) 
 //	{
 //		System.out.println("ENTROU AQUI NO GET ----------");
@@ -63,13 +63,12 @@ public class LoginController  extends AbstractController
 //	}
 	
 	
-	//SEGUNDO EXEMPLO
-	@RequestMapping(value= {ROOT, "/login"}, method = RequestMethod.GET)
+//	//SECOND TRY
+	@RequestMapping(value= {ROOT, "/login**"}, method = RequestMethod.GET)
 	public ModelAndView  customLogin(
 			@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout) 
 	{
-	 
 			ModelAndView model = new ModelAndView();
 			if (error != null) {
 				model.addObject("error", "Invalid username and password!");
@@ -82,17 +81,17 @@ public class LoginController  extends AbstractController
 	 
 			return model;
  	}
-	
-	 @RequestMapping(value = "/admin**", method = RequestMethod.GET)
-		public ModelAndView adminPage() {
-	 
-			ModelAndView model = new ModelAndView();
-			model.addObject("title", "Spring Security Custom Login Form");
-			model.addObject("message", "This is protected page!");
-			model.setViewName("admin");
-	 
-			return model;
-		}
+//	
+//	 @RequestMapping(value = "/admin**", method = RequestMethod.GET)
+//		public ModelAndView adminPage() {
+//	 
+//			ModelAndView model = new ModelAndView();
+//			model.addObject("title", "Spring Security Custom Login Form");
+//			model.addObject("message", "This is protected page!");
+//			model.setViewName("admin");
+//	 
+//			return model;
+//		}
 //	 @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 //		public ModelAndView welcomePage() {
 //	 
@@ -111,7 +110,7 @@ public class LoginController  extends AbstractController
 	public ModelAndView listItems(Model model) 
 	{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    this.loggedUser = loginService.findUser(auth.getName());
+	    this.loggedUser = this.loginService.findUser(auth.getName());
 		
 		model.addAttribute("items", this.loggedUser.getShopList().getItems());
 		if(this.loggedUser != null )
@@ -125,19 +124,22 @@ public class LoginController  extends AbstractController
 	@RequestMapping("list")
 	public String addItem(Item item) 
 	{
-		System.out.println("----------------------- logedUser id " + this.loggedUser.getId());
-		System.out.println("-----------------------logedUser shop List " + this.loggedUser.getShopList());
-		System.out.println("-----------------------item name " +  item.getName());
-		
-		
-		this.loggedUser.getShopList().addItem(item);
-		
-		System.out.println("-----------------------logedUser shop List " + this.loggedUser.getShopList());
-		System.out.println("-----------------------item name " +  item.getShopList());
-		
-		
+		addItemInShopList(item);
 		this.loginService.updateUser(this.loggedUser);
+		
 	    return REDIRECT_PREFIX + "list";
+	}
+	
+	/**
+	 * Method for add item in ShopList
+	 * @param items
+	 */
+	public void addItemInShopList(Item... items) 
+	{
+		for (int i = 0; i < items.length; i++) 
+		{
+			this.loggedUser.getShopList().getItems().add(items[i]);
+		}
 	}
 	
 }

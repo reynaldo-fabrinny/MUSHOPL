@@ -38,12 +38,4 @@ public class ShopList
 	{
 		return this.items;
 	}
-	
-	public void addItem(Item... items) 
-	{
-		for (int i = 0; i < items.length; i++) 
-		{
-			this.getItems().add(items[i]);
-		}
-	}
 }

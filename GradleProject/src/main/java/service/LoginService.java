@@ -14,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import dao.UserDAOImp;
 import model.User;
 
-@Service("LoginService")
-public class LoginService implements UserDetailsService
+@Service
+public class LoginService// implements UserDetailsService
 {
 	private UserDAOImp userDao;
 	
@@ -55,16 +55,17 @@ public class LoginService implements UserDetailsService
 	 {
 		 this.userDao.saveOrUpdateUser(user);
 	 }
-
-	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException 
-	{
-		User user = userDao.findUser(email);
- 
-		List<GrantedAuthority> permitions = new ArrayList<GrantedAuthority>();
-		permitions.add(new SimpleGrantedAuthority("ROLE_USER"));
-		
-		return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),permitions);
-	}
+//
+//	@Override
+//	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException 
+//	{
+//		System.out.println("CHEGA AQUI PELO MENOS  2");
+//		User user = userDao.findUser(email);
+// 
+//		List<GrantedAuthority> permitions = new ArrayList<GrantedAuthority>();
+//		permitions.add(new SimpleGrantedAuthority("ROLE_USER"));
+//		
+//		return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),permitions);
+//	}
 
 }

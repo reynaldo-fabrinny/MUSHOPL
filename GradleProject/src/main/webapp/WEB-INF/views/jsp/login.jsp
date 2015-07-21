@@ -1,4 +1,3 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +6,7 @@
 	</head>
 	<body>
 		<div class="container">
-		    <form name='form' action='j_spring_security_check' method='POST'>
+		     <form name="form" action="j_spring_security_check" method= "POST">
 	            <table border="1" width="30%" cellpadding="3">
 	                <thead>
 	                    <tr>

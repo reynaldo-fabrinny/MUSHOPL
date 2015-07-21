@@ -22,5 +22,5 @@ alter table ITEM drop constraint FK_30qxelxj4lnq7fxjufwn2dwf7;
 --Basic data
 insert into SHOPLIST ("SHOPLIST_ID") values(0);
 insert into SHOPLIST ("SHOPLIST_ID") values(1);
-insert into user (email, name, password,SHOPLIST_ID) values ('reynaldo@gmail.com','reynaldo','1234',0);
-insert into user (email, name, password,SHOPLIST_ID) values ('test@gmail.com','test','1234',1);
+insert into user (email, name, password,SHOPLIST_ID) values ('reynaldo@gmail.com','Reynaldo','1234',0);
+insert into user (email, name, password,SHOPLIST_ID) values ('pedro@gmail.com','Pedro','1234',1);
