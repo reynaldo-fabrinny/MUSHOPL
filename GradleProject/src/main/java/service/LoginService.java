@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import dao.UserDAOImp;
 import model.User;
 
-@Service
+@Service("LoginService")
 public class LoginService implements UserDetailsService
 {
 	private UserDAOImp userDao;
