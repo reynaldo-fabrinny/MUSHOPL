@@ -9,27 +9,31 @@
 	 <http auto-config="true">
 	    <intercept-url pattern="/admin**" access="ROLE_USER" />
 	  <!--   <form-login login-page='/login?login_error=1' default-target-url="/loginSuccess"/> -->
-	  <form-login  login-page="/login" default-target-url="/welcome" 
+	  <form-login  login-page="/login" default-target-url="/list" 
 			authentication-failure-url="/login?error" username-parameter="email" password-parameter="password" />
 	</http>
 	
-	
+	<!-- 
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
 				<user name="mkyong@gmail.com" password="123456" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
-	</authentication-manager>
-	
-	<!-- <authentication-manager>
-	<authentication-provider>
-	<jdbc-user-service
-	data-source-ref="dataSource"
-	users-by-username-query="select username,password,enabled from user_authentication where username=?"
-	authorities-by-username-query="select u1.username, u2.role from user_authentication u1, user_authorization u2 where u1.user_id = u2.user_id and u1.username =?" />
-	</authentication-provider>
 	</authentication-manager> -->
 	
+	 <!-- <authentication-manager>
+		<authentication-provider>
+		<jdbc-user-service data-source-ref="dataSource"
+			users-by-username-query="select username,password,enabled from user_authentication where username=?"
+			authorities-by-username-query="select u1.username, u2.role from user_authentication u1, user_authorization u2 where u1.user_id = u2.user_id and u1.username =?" />
+		</authentication-provider>
+	</authentication-manager>
+	 -->
+	
+	<authentication-manager>
+		<authentication-provider user-service-ref="loginService" >
+		</authentication-provider>
+	</authentication-manager>
 	
 </beans:beans>

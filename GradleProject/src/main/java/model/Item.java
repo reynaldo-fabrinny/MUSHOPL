@@ -48,7 +48,8 @@ public class Item
 	{
 		return quantity;
 	}
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 	public void setQuantity(int quantity)

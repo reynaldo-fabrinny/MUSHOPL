@@ -5,9 +5,10 @@ import model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,7 +43,7 @@ public class LoginController  extends AbstractController
 //		return "index";
 //	}
 //	
-//	@RequestMapping(value = ROOT, method = RequestMethod.POST)
+//	@RequestMapping(value ={ROOT, "/login"}, method = RequestMethod.POST)
 //	public ModelAndView login(@ModelAttribute User loginTry, Model model) 
 //	{
 //		model.addAttribute("loginTry", loginTry);
@@ -60,14 +61,14 @@ public class LoginController  extends AbstractController
 //			return new ModelAndView(REDIRECT_PREFIX + ROOT);
 //		}
 //	}
-
+	
 	
 	//SEGUNDO EXEMPLO
-	
-	 @RequestMapping(value="/login", method = RequestMethod.GET)
+	@RequestMapping(value= {ROOT, "/login"}, method = RequestMethod.GET)
 	public ModelAndView  customLogin(
 			@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout) {
+			@RequestParam(value = "logout", required = false) String logout) 
+	{
 	 
 			ModelAndView model = new ModelAndView();
 			if (error != null) {
@@ -92,25 +93,26 @@ public class LoginController  extends AbstractController
 	 
 			return model;
 		}
-	 @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-		public ModelAndView welcomePage() {
-	 
-			ModelAndView model = new ModelAndView();
-			model.addObject("title", "Spring Security Custom Login Form");
-			model.addObject("message", "This is welcome page!");
-			model.setViewName("hello");
-			return model;
-	 
-		}
-	 
-	
-	
+//	 @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+//		public ModelAndView welcomePage() {
+//	 
+//			ModelAndView model = new ModelAndView();
+//			model.addObject("title", "Spring Security Custom Login Form");
+//			model.addObject("message", "This is welcome page!");
+//			model.setViewName("hello");
+//			return model;
+//	 
+//		}
+
 	
 	//--------------  LIST --------
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView listItems(Model model) 
 	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    this.loggedUser = loginService.findUser(auth.getName());
+		
 		model.addAttribute("items", this.loggedUser.getShopList().getItems());
 		if(this.loggedUser != null )
 		{
