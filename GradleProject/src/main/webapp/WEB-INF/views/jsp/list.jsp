@@ -36,5 +36,8 @@
 	    <form class="logoutButton" method="post" action="logout">
 	    	<input type="submit" value="Submit" />
 	    </form>
+	    <div class="logoutButton">
+			<a href="<c:url value="j_spring_security_logout" />">Logout</a>
+		</div>
 	</body>
 </html>

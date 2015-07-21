@@ -7,27 +7,29 @@
 	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
 	 <http auto-config="true">
-		<intercept-url pattern="/login" access="ROLE_USER" />
-		<form-login login-page='/customLogin?login_error=1' default-target-url="/loginSuccess"/>
-	</http> 
+	    <intercept-url pattern="/admin**" access="ROLE_USER" />
+	  <!--   <form-login login-page='/login?login_error=1' default-target-url="/loginSuccess"/> -->
+	  <form-login  login-page="/login" default-target-url="/welcome" 
+			authentication-failure-url="/login?error" username-parameter="email" password-parameter="password" />
+	</http>
 	
-	<!-- <http auto-config="true">
-		<intercept-url pattern="/admin**" access="ROLE_USER" />
-		<form-login 
-		    login-page="/login" 
-		    default-target-url="/welcome" 
-			authentication-failure-url="/login?error" 
-			username-parameter="username"
-			password-parameter="password" />
-		<logout logout-success-url="/login?logout" />
-		enable csrf protection
-	</http> -->
 	
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="mkyong" password="123456" authorities="ROLE_USER" />
+				<user name="mkyong@gmail.com" password="123456" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
+	
+	<!-- <authentication-manager>
+	<authentication-provider>
+	<jdbc-user-service
+	data-source-ref="dataSource"
+	users-by-username-query="select username,password,enabled from user_authentication where username=?"
+	authorities-by-username-query="select u1.username, u2.role from user_authentication u1, user_authorization u2 where u1.user_id = u2.user_id and u1.username =?" />
+	</authentication-provider>
+	</authentication-manager> -->
+	
+	
 </beans:beans>
