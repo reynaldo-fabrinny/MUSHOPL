@@ -60,12 +60,8 @@ public class LoginController extends AbstractController
 		
 	    return REDIRECT_PREFIX + LIST_PAGE;
 	}
-	
-	/**
-	 * Method responsible to add item the user's shopList in ShopList
-	 * @param items
-	 */
-	public void addItemInShopList(Item... items) 
+
+	private void addItemInShopList(Item... items) 
 	{
 		for (int i = 0; i < items.length; i++) 
 		{
