@@ -31,8 +31,10 @@
 	</authentication-manager>
 	 -->
 	
+	<!-- TODO, SWITCH TO ENCRIPTATED -->
 	<authentication-manager>
 		<authentication-provider user-service-ref="loginService" >
+			<password-encoder hash="plaintext" />  
 		</authentication-provider>
 	</authentication-manager>
 	
