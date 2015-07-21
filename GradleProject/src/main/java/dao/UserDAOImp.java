@@ -18,13 +18,12 @@ public class UserDAOImp implements UserDAO
         this.sessionFactory = sf;
     }
 	
+	/**
+	 * Finds the user based on the Email and password..
+	 * Returns null in case there in no user with this email. 
+	 */
 	public User findUser(User user)
 	{
-		/*
-		 * Query query = session.createSQLQuery(
-			"select * from user where email= :email").addEntity(User.class).setParameter("email", user.getEmail());
-			List result = query.list();
-		 */
 		Session session = this.sessionFactory.getCurrentSession();
 		
 		Criteria criteria = session.createCriteria(User.class);
@@ -34,6 +33,10 @@ public class UserDAOImp implements UserDAO
 		
 		return dbUser;
 	}
+	/**
+	 * Finds the user through the Email in the database.
+	 * Returns null in case there in no user with this email. 
+	 */
 	public User findUser(String email)
 	{
 		Session session = this.sessionFactory.getCurrentSession();

@@ -24,13 +24,8 @@
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
- 
-<!-- 	<authentication-manager>
-		<authentication-provider user-service-ref="loginService" >
-		</authentication-provider>
-	</authentication-manager>  -->
 	
-	<!-- TODO, SWITCH TO ENCRIPTATED -->
+	<!-- TODO, SWITCH TO ENCRIPTATED-->
 	<!-- <authentication-manager>
 		<authentication-provider user-service-ref="loginService" >
 			<password-encoder hash="plaintext" />  
