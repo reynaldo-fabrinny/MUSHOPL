@@ -1,3 +1,4 @@
+--Database Script backup
 alter table USER drop constraint FK_jj1i1ejomt70kg80tncyl1uo5
 alter table item_shoplist drop constraint FK_m17rx3mxyy578rt5ihmpnc4pn
 alter table item_shoplist drop constraint FK_dk1ngitqf21hqsfm3vw22ko90
@@ -15,7 +16,7 @@ alter table USER add constraint FK_jj1i1ejomt70kg80tncyl1uo5 foreign key (SHOPLI
 alter table item_shoplist add constraint FK_m17rx3mxyy578rt5ihmpnc4pn foreign key (ITEM_ID) references ITEM
 alter table item_shoplist add constraint FK_dk1ngitqf21hqsfm3vw22ko90 foreign key (SHOPLIST_ID) references SHOPLIST
 
---Basic data
+--Sample data
 insert into SHOPLIST ("SHOPLIST_ID") values(0);
 insert into SHOPLIST ("SHOPLIST_ID") values(1);
 insert into user (email, name, password,SHOPLIST_ID) values ('reynaldo@gmail.com','Reynaldo','1234',0);
