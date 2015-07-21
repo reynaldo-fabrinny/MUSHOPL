@@ -28,7 +28,7 @@ public class LoginController  extends AbstractController
 		this.loginService = ls;
 	}
 
-	//MINHA TENTATIVA
+//	//MINHA TENTATIVA
 //	@RequestMapping(value = ROOT, method = RequestMethod.GET)
 //	public String login(Model model) 
 //	{
@@ -63,62 +63,62 @@ public class LoginController  extends AbstractController
 
 	
 	//SEGUNDO EXEMPLO
-//	
-//	@RequestMapping(value="/", method = RequestMethod.GET)
-//	public String customLogin(ModelMap map) {
-// 		return "index";
-// 	}
-//	@RequestMapping(value="/loginSuccess", method = RequestMethod.GET)
-//	public String success(ModelMap map) {
-//		map.addAttribute("msg", "Successfully logged in");
-//		return "success";
-//	}
-//	
+	
+	@RequestMapping(value="/customLogin", method = RequestMethod.GET)
+	public String customLogin(ModelMap map) {
+ 		return "index";
+ 	}
+	@RequestMapping(value="/loginSuccess", method = RequestMethod.GET)
+	public String success(ModelMap map) {
+		map.addAttribute("msg", "Successfully logged in");
+		return "success";
+	}
+	
 //	-----------------------------------------------------------------------
 	
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-	public ModelAndView welcomePage() {
- 
-		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Custom Login Form");
-		model.addObject("message", "This is welcome page!");
-		model.setViewName("hello");
-		return model;
- 
-	}
- 
-	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
-	public ModelAndView adminPage() {
- 
-		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Custom Login Form");
-		model.addObject("message", "This is protected page!");
-		model.setViewName("admin");
- 
-		return model;
- 
-	}
- 
-	//Spring Security see this :
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login(
-		@RequestParam(value = "error", required = false) String error,
-		@RequestParam(value = "logout", required = false) String logout) {
- 
-		ModelAndView model = new ModelAndView();
-		if (error != null) {
-			model.addObject("error", "Invalid username and password!");
-		}
- 
-		if (logout != null) {
-			model.addObject("msg", "You've been logged out successfully.");
-		}
-		model.setViewName("login");
- 
-		return model;
- 
-	}
-	
+//	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+//	public ModelAndView welcomePage() {
+// 
+//		ModelAndView model = new ModelAndView();
+//		model.addObject("title", "Spring Security Custom Login Form");
+//		model.addObject("message", "This is welcome page!");
+//		model.setViewName("hello");
+//		return model;
+// 
+//	}
+// 
+//	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
+//	public ModelAndView adminPage() {
+// 
+//		ModelAndView model = new ModelAndView();
+//		model.addObject("title", "Spring Security Custom Login Form");
+//		model.addObject("message", "This is protected page!");
+//		model.setViewName("admin");
+// 
+//		return model;
+// 
+//	}
+// 
+//	//Spring Security see this :
+//	@RequestMapping(value = "/login", method = RequestMethod.GET)
+//	public ModelAndView login(
+//		@RequestParam(value = "error", required = false) String error,
+//		@RequestParam(value = "logout", required = false) String logout) {
+// 
+//		ModelAndView model = new ModelAndView();
+//		if (error != null) {
+//			model.addObject("error", "Invalid username and password!");
+//		}
+// 
+//		if (logout != null) {
+//			model.addObject("msg", "You've been logged out successfully.");
+//		}
+//		model.setViewName("login");
+// 
+//		return model;
+// 
+//	}
+//	
 	
 	
 	

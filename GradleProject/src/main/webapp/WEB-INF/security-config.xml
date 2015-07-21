@@ -6,12 +6,12 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-	<!-- <http auto-config="true">
-		<intercept-url pattern="/*" access="ROLE_USER" />
+	 <http auto-config="true">
+		<intercept-url pattern="/login" access="ROLE_USER" />
 		<form-login login-page='/customLogin?login_error=1' default-target-url="/loginSuccess"/>
-	</http> -->
+	</http> 
 	
-	<http auto-config="true">
+	<!-- <http auto-config="true">
 		<intercept-url pattern="/admin**" access="ROLE_USER" />
 		<form-login 
 		    login-page="/login" 
@@ -20,8 +20,8 @@
 			username-parameter="username"
 			password-parameter="password" />
 		<logout logout-success-url="/login?logout" />
-		<!-- enable csrf protection -->
-	</http>
+		enable csrf protection
+	</http> -->
 	
 	<authentication-manager>
 		<authentication-provider>
